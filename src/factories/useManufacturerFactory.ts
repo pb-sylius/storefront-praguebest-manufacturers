@@ -32,8 +32,40 @@ export function useManufacturerFactory<MANUFACTURERS, MANUFUACTURER_SEARCH_PARAM
       }
     };
 
+    const all = async (searchParams) => {
+      Logger.debug(`useManufacturer/${id}/search`, searchParams);
+
+      try {
+        loading.value = true;
+        manufacturers.value = await _factoryParams.manufacturersAll(searchParams);
+        error.value.search = null;
+      } catch (err) {
+        error.value.search = err;
+        Logger.error(`useManufacturer/${id}/search`, err);
+      } finally {
+        loading.value = false;
+      }
+    };
+
+    const one = async (searchParams) => {
+      Logger.debug(`useManufacturer/${id}/search`, searchParams);
+
+      try {
+        loading.value = true;
+        manufacturers.value = await _factoryParams.manufacturersOne(searchParams);
+        error.value.search = null;
+      } catch (err) {
+        error.value.search = err;
+        Logger.error(`useManufacturer/${id}/search`, err);
+      } finally {
+        loading.value = false;
+      }
+    };
+
     return {
       search,
+      all,
+      one,
       manufacturers: computed(() => manufacturers.value),
       loading: computed(() => loading.value),
       error: computed(() => error.value)
