@@ -5,7 +5,8 @@ import {
   ComposableFunctionArgs,
   Context,
   CustomQuery,
-  FactoryParams
+  FactoryParams,
+  AgnosticPrice
 } from "@vue-storefront/core";
 import { Product } from '@realtainment/sylius-api/src/types';
 
@@ -35,7 +36,7 @@ export interface UseManufacturer<MANUFACTURERS, MANUFUACTURER_SEARCH_PARAMS, API
 
 export interface UseManufacturerFactoryParams<MANUFACTURERS, MANUFUACTURER_SEARCH_PARAMS extends ManufacturerSearchParams, API extends PlatformApi = any> extends FactoryParams<API> {
   manufacturersSearch: (context: Context, params: MANUFUACTURER_SEARCH_PARAMS & { customQuery?: CustomQuery }) => Promise<MANUFACTURERS>;
-  manufacturersAll: (context: Context) => Promise<MANUFACTURERS>;
+  manufacturersAll: (context: Context, params: MANUFUACTURER_SEARCH_PARAMS & { customQuery?: CustomQuery }) => Promise<MANUFACTURERS>;
   manufacturersOne: (context: Context, params: MANUFUACTURER_SEARCH_PARAMS & { customQuery?: CustomQuery }) => Promise<MANUFACTURERS>;
 }
 
@@ -52,5 +53,8 @@ export interface ManufacturerGetters<MANUFACTURER> {
   getCoverImage: (manufacturer: MANUFACTURER) => string;
   getId: (manufacturer: MANUFACTURER) => string;
   getProducts: (manufacturer: MANUFACTURER) => Product[];
+  getProductsPagination: (manufacturer: MANUFACTURER, activePage: number) => any;
+  getProductPrice: (product: any) => AgnosticPrice,
+  getProductImage: (product: any) => string;
   [getterName: string]: any;
 }
