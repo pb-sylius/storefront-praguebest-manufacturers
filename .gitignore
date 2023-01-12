@@ -1,5 +1,4 @@
-#lib must be copied to repo
-#lib
+lib
 node_modules
 coverage
 yarn-error.log
