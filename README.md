@@ -9,7 +9,7 @@ This plugin works for few weeks as a proof-of-concept. It is functional, but was
 
 ---
 
-👉 **This VueStoreFront module is for list of manufacturers and detail of manufacturer with list of his products.** <span style='display: inline-block; transform: scale(-1, 1);'>👉</span>
+👉 **This module is for list of manufacturers and detail of manufacturer with list of his products** <span style='display: inline-block; transform: scale(-1, 1);'>👉</span>
 
 _by [PragueBest.cz](https://www.praguebest.cz/)_ ✍️
 
